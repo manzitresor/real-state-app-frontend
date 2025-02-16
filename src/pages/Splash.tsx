@@ -3,13 +3,20 @@ import stairs from "../assets/image 3.svg"
 import logo from "../assets/logo.png"
 export default function Splash() {
   return (
-    <div>
-      <img src={stairs}/>
-      <div>
-          <img src={logo}/> 
-          <h1>Kwanda Real Estate</h1> 
+    <div className="h-screen w-full relative">
+      <div className="h-full">
+        <img src={stairs} className="h-full w-full object-cover"/>
       </div>
-      <Link to="/">let's start</Link>
+      <div className="absolute bottom-0 w-full h-full">
+        <div className="bg-secondary-blue opacity-60 absolute inset-0"></div>
+        <div className="relative h-full text-white">
+            <div>
+              <img src={logo} />
+            </div>
+            <h1>Kwanda Real Estate</h1>
+              <Link to="/">let's start</Link>
+            </div>
+        </div>
     </div>
   )
 }
