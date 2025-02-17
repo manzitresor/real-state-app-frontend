@@ -1,3 +1,1 @@
 # Real Estate App Frontend
-
-
