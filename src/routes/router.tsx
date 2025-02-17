@@ -1,16 +1,23 @@
-import { createBrowserRouter } from 'react-router-dom'
-import App from '../App'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import Splash from '../pages/Splash'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
     children: [
       {
-        path: 'splash',
-        element: <Splash />,
+        index: true,
+        element: <Navigate to='/onboarding/splash' />,
       },
+      {
+        path:'onboarding',
+        children: [
+          {
+            path:'splash',
+            element: <Splash/>
+          }
+        ]
+      }
     ],
   },
 ])
