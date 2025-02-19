@@ -1,6 +1,8 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import Splash from '../pages/Splash'
 import ProductTourOne from '../pages/productTour/ProductTourOne'
+import ProductTourTwo from '../pages/productTour/ProductTourTwo'
+import ProductTourThree from '../pages/productTour/ProductTourThree'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
           {
             path: 'productTour-1',
             element: <ProductTourOne />,
+          },
+          {
+            path: 'productTour-2',
+            element: <ProductTourTwo/>
+          },
+          {
+            path: 'productTour-3',
+            element: <ProductTourThree/>
           },
         ],
       },

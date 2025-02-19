@@ -1,19 +1,19 @@
 import ProductTour from "../../components/productTour/ProductTour";
 import TourNavigation from "../../components/productTour/TourNavigation";
-import tourOneImg from '../../assets/Rectangle 6.png'
+import tourTwoImg from '../../assets/Rectangle7.svg'
 
 const tourContent = {
-  image: tourOneImg,
-  title: 'Find best place to stay in good price ',
+  image: tourTwoImg,
+  title: 'Fast sell your propertyin just one click ',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
-  path: '/onboarding/productTour-2',
-  progress: 100,
+  path: '/onboarding/productTour-3',
+  progress: 50,
 }
 
-export default function ProductTourOne() {
+export default function ProductTourTwo() {
   return (
     <div className="h-screen">
-      <TourNavigation />
+      <TourNavigation/>
       <ProductTour {...tourContent}></ProductTour>
     </div>
   )
