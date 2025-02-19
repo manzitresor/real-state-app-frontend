@@ -18,7 +18,7 @@ export default function Splash() {
           </div>
           <div>
             <Link
-              to="/"
+              to="/onboarding/productTour-1"
               className="bg-green-primary rounded-lg px-10 py-4 text-lg font-bold items-center"
             >
               let's start

@@ -1,5 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import Splash from '../pages/Splash'
+import ProductTourOne from '../pages/productTour/ProductTourOne'
 
 const router = createBrowserRouter([
   {
@@ -7,17 +8,21 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to='/onboarding/splash' />,
+        element: <Navigate to="/onboarding/splash" />,
       },
       {
-        path:'onboarding',
+        path: 'onboarding',
         children: [
           {
-            path:'splash',
-            element: <Splash/>
-          }
-        ]
-      }
+            path: 'splash',
+            element: <Splash />,
+          },
+          {
+            path: 'productTour-1',
+            element: <ProductTourOne />,
+          },
+        ],
+      },
     ],
   },
 ])
