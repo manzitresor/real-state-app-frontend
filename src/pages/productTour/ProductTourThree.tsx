@@ -1,9 +1,11 @@
 import ProductTour from "../../components/productTour/ProductTour";
 import TourNavigation from "../../components/productTour/TourNavigation";
 import tourThreeImg from '../../assets/Rectangle8.svg'
+import tourThreeImgDesktop from '../../assets/element2.svg'
 
 const tourContent = {
   image: tourThreeImg,
+  imgdesktop: tourThreeImgDesktop,
   title: 'Fast sell your propertyin just one click ',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
   path: '/onboarding/productTour-3',
