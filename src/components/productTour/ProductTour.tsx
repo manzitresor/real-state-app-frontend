@@ -13,7 +13,7 @@ interface TourContentProps {
 
 export default function ProductTour(props:TourContentProps) {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative mn-h-screeni">
       {/* Mobile design */}
       <div className="mt-4 mx-4 md:hidden">
         <h1 className="text-2xl">{props.title}</h1>
