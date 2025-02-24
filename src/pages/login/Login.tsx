@@ -35,8 +35,8 @@ export default function Login() {
         </button>
       </form>
       <p className="mt-10 mx-4">
-        Don’t have an account?{' '}
-        <Link to="#">
+        Don’t have an account?
+        <Link to="/register">
           <span className='cursor-pointer hover:text-secondary-blue'>Register</span>
         </Link>
       </p>
