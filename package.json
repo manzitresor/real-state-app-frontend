@@ -11,7 +11,7 @@
     "prepare": "husky install .husky",
     "lint:commit": "commitlint",
     "lint:no-cache": "eslint src",
-     "lint:fix": "eslint src --fix --cache"
+    "lint:fix": "eslint src --fix --cache"
   },
   "commitlint": {
     "extends": [
@@ -22,6 +22,7 @@
     "eslint-plugin-unicorn": "^56.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.1.5"
   },
   "devDependencies": {
