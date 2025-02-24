@@ -5,7 +5,7 @@ import loginImage from '../../assets/login-IMAGE.svg'
 
 export default function Login() {
   return (
-    <div className="mx-4">
+    <div className="mx-4 md:flex md:flex-col md:items-center">
       <div>
         <img src={loginImage} alt="login-image" />
       </div>
@@ -15,7 +15,7 @@ export default function Login() {
         </h1>
         <p className='text-gray-500'>quis nostrud exercitation ullamco laboris nisi ut</p>
       </div>
-      <form className="space-y-7 my-12">
+      <form className="space-y-7 my-12 w-full max-w-sm">
         <div className="border border-black flex items-center justify-evenly p-2 rounded-lg">
           <input type="email" placeholder="Email" className="flex-1 outline-none" />
           <MdOutgoingMail className="text-3xl" />
