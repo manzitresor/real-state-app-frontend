@@ -4,22 +4,25 @@ import { CiUser } from 'react-icons/ci'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import useUsers from '../../hooks/useUsers';
 
 const registerSchema = z.object({
-  fullName: z.string().nonempty(),
+  name: z.string().nonempty(),
   email: z.string().email(),
   password: z.string().min(8),
-  confirmPassword: z.string().min(8)
+  // confirmPassword: z.string().min(8)
 })
 
 type formFields = z.infer<typeof registerSchema>
 
 export default function Register() {
+  const {postUser} = useUsers()
  const {
    register,
    handleSubmit,
    formState: { errors, isSubmitting },
-   setError
+   setError,
+   reset
  } = useForm<formFields>({
   defaultValues: {},
    resolver: zodResolver(registerSchema),
@@ -27,8 +30,9 @@ export default function Register() {
 
  const onSubmit: SubmitHandler<formFields> = async(data) => {
   try {
-        console.log(data)
-       await new Promise(resolve => setTimeout(resolve, 2000)) 
+     await postUser(data)
+     reset()
+     console.log('Data sent successful')
   } catch(error){
     setError('root',{ message: 'Failed to send data'})
     console.log(error)
@@ -51,13 +55,13 @@ export default function Register() {
           <div className="border border-black flex items-center justify-evenly p-2 rounded-lg">
             <input
               type="text"
-              {...register('fullName', { required: 'Full name is required' })}
+              {...register('name', { required: 'Full name is required' })}
               placeholder="Full name"
               className="flex-1 outline-none"
             />
             <CiUser className="text-3xl" />
           </div>
-          {errors && <div className="text-red-600">{errors.fullName?.message}</div>}
+          {errors && <div className="text-red-600">{errors.name?.message}</div>}
           <div className="border border-black flex items-center justify-evenly p-2 rounded-lg">
             <input
               type="email"
@@ -83,11 +87,11 @@ export default function Register() {
               type="password"
               placeholder="Comfirm-Password"
               className="flex-1 outline-none"
-              {...register('confirmPassword')}
+              // {...register('confirmPassword')}
             />
             <CiLock className="text-3xl" />
           </div>
-          {errors && <div className="text-red-600">{errors.confirmPassword?.message}</div>}
+          {/* {errors && <div className="text-red-600">{errors.confirmPassword?.message}</div>} */}
           <button
             type="submit"
             disabled={isSubmitting}
