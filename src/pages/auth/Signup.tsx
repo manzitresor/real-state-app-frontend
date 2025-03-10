@@ -1,43 +1,38 @@
-import { CiLock } from 'react-icons/ci';
-import { MdKeyboardArrowLeft, MdOutgoingMail } from 'react-icons/md';
+import { CiLock } from 'react-icons/ci'
+import { MdKeyboardArrowLeft, MdOutgoingMail } from 'react-icons/md'
 import { CiUser } from 'react-icons/ci'
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import useUsers from '../../hooks/useUsers';
+import useUsers from '../../hooks/useUsers'
+import signSchema from '../../schema/signup'
 
-const registerSchema = z.object({
-  name: z.string().nonempty(),
-  email: z.string().email(),
-  password: z.string().min(8),
-  // confirmPassword: z.string().min(8)
-})
 
-type formFields = z.infer<typeof registerSchema>
+type formFields = z.infer<typeof signSchema>
 
-export default function Register() {
-  const {postUser} = useUsers()
- const {
-   register,
-   handleSubmit,
-   formState: { errors, isSubmitting },
-   setError,
-   reset
- } = useForm<formFields>({
-  defaultValues: {},
-   resolver: zodResolver(registerSchema),
- })
+export default function SignupPage() {
+  const { postUser } = useUsers()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setError,
+    reset,
+  } = useForm<formFields>({
+    defaultValues: {},
+    resolver: zodResolver(signSchema),
+  })
 
- const onSubmit: SubmitHandler<formFields> = async(data) => {
-  try {
-     await postUser(data)
-     reset()
-     console.log('Data sent successful')
-  } catch(error){
-    setError('root',{ message: 'Failed to send data'})
-    console.log(error)
+  const onSubmit: SubmitHandler<formFields> = async data => {
+    try {
+      await postUser(data)
+      reset()
+      console.log('Data sent successful')
+    } catch (error) {
+      setError('root', { message: 'Failed to send data' })
+      console.log(error)
+    }
   }
- }
 
   return (
     <div>
