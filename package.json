@@ -11,7 +11,7 @@
     "prepare": "husky install .husky",
     "lint:commit": "commitlint",
     "lint:no-cache": "eslint src",
-     "lint:fix": "eslint src --fix --cache"
+    "lint:fix": "eslint src --fix --cache"
   },
   "commitlint": {
     "extends": [
@@ -19,10 +19,17 @@
     ]
   },
   "dependencies": {
+    "@hookform/resolvers": "^4.1.3",
+    "@tanstack/react-query": "^5.67.1",
+    "axios": "^1.8.2",
+    "axios-hooks": "^5.1.0",
     "eslint-plugin-unicorn": "^56.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.5"
+    "react-hook-form": "^7.54.2",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.1.5",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",

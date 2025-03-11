@@ -8,7 +8,7 @@ const tourContent = {
   imgdesktop: tourThreeImgDesktop,
   title: 'Fast sell your propertyin just one click ',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
-  path: '/onboarding/productTour-3',
+  path: '/login',
   progress: 30,
 }
 
