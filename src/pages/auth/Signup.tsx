@@ -1,48 +1,49 @@
-import { CiLock } from 'react-icons/ci';
-import { MdKeyboardArrowLeft, MdOutgoingMail } from 'react-icons/md';
+import { CiLock } from 'react-icons/ci'
+import { MdKeyboardArrowLeft, MdOutgoingMail } from 'react-icons/md'
 import { CiUser } from 'react-icons/ci'
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import useUsers from '../../hooks/useUsers';
+import useUsers from '../../hooks/useUsers'
+import signSchema from '../../schema/signup'
+import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
-const registerSchema = z.object({
-  name: z.string().nonempty(),
-  email: z.string().email(),
-  password: z.string().min(8),
-  // confirmPassword: z.string().min(8)
-})
 
-type formFields = z.infer<typeof registerSchema>
+type formFields = z.infer<typeof signSchema>
 
-export default function Register() {
-  const {postUser} = useUsers()
- const {
-   register,
-   handleSubmit,
-   formState: { errors, isSubmitting },
-   setError,
-   reset
- } = useForm<formFields>({
-  defaultValues: {},
-   resolver: zodResolver(registerSchema),
- })
+export default function SignupPage() {
+  const { postUser } = useUsers()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<formFields>({
+    defaultValues: {},
+    resolver: zodResolver(signSchema),
+  })
 
- const onSubmit: SubmitHandler<formFields> = async(data) => {
-  try {
-     await postUser(data)
-     reset()
-     console.log('Data sent successful')
-  } catch(error){
-    setError('root',{ message: 'Failed to send data'})
-    console.log(error)
+  const onSubmit: SubmitHandler<formFields> = async data => {
+    try {
+       // eslint-disable-next-line @typescript-eslint/no-unused-vars
+       const {confirmPassword,...userData} = data
+       
+      await postUser(userData)
+      reset()
+      toast.success('You have successful create account')
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to send data'
+      toast.error(errorMessage)
+    }
   }
- }
 
   return (
     <div>
       <div className="bg-gray-300 rounded-full my-5 mx-2 w-11 h-11 flex items-center justify-center">
-        <MdKeyboardArrowLeft className="text-2xl text-secondary-blue" />
+        <Link to='/login'>
+          <MdKeyboardArrowLeft className="text-2xl text-secondary-blue" />
+        </Link>
       </div>
       <div className="mx-4 flex flex-col items-center">
         <div className="my-8 space-y-4">
@@ -57,7 +58,7 @@ export default function Register() {
               type="text"
               {...register('name', { required: 'Full name is required' })}
               placeholder="Full name"
-              className="flex-1 outline-none"
+              className="flex-1 outline-none "
             />
             <CiUser className="text-3xl" />
           </div>
@@ -65,9 +66,9 @@ export default function Register() {
           <div className="border border-black flex items-center justify-evenly p-2 rounded-lg">
             <input
               type="email"
-              {...register('email', { required: 'Email is required' })}
+              {...register('email')}
               placeholder="Email"
-              className="flex-1 outline-none"
+              className="flex-1 outline-none "
             />
             <MdOutgoingMail className="text-3xl" />
           </div>
@@ -87,11 +88,11 @@ export default function Register() {
               type="password"
               placeholder="Comfirm-Password"
               className="flex-1 outline-none"
-              // {...register('confirmPassword')}
+              {...register('confirmPassword')}
             />
             <CiLock className="text-3xl" />
           </div>
-          {/* {errors && <div className="text-red-600">{errors.confirmPassword?.message}</div>} */}
+          {errors && <div className="text-red-600">{errors.confirmPassword?.message}</div>}
           <button
             type="submit"
             disabled={isSubmitting}

@@ -3,8 +3,8 @@ import Splash from '../pages/Splash'
 import ProductTourOne from '../pages/productTour/ProductTourOne'
 import ProductTourTwo from '../pages/productTour/ProductTourTwo'
 import ProductTourThree from '../pages/productTour/ProductTourThree'
-import Login from '../pages/login/Login'
-import Register from '../pages/login/Register'
+import Login from '../pages/auth/Login'
+import SignupPage from '../pages/auth/Signup'
 
 const router = createBrowserRouter([
   {
@@ -27,22 +27,22 @@ const router = createBrowserRouter([
           },
           {
             path: 'productTour-2',
-            element: <ProductTourTwo/>
+            element: <ProductTourTwo />,
           },
           {
             path: 'productTour-3',
-            element: <ProductTourThree/>
+            element: <ProductTourThree />,
           },
         ],
       },
       {
         path: 'login',
-        element: <Login/>
+        element: <Login />,
       },
       {
         path: 'register',
-        element: <Register/>
-      }
+        element: <SignupPage />,
+      },
     ],
   },
 ])

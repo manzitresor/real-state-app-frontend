@@ -3,13 +3,10 @@ import { MdOutgoingMail } from 'react-icons/md'
 import { CiLock } from 'react-icons/ci'
 import loginImage from '../../assets/login-IMAGE.svg'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import {string, z} from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import {z} from 'zod'
+import loginSchema from '../../schema/login'
 
-const loginSchema = z.object({
-  email: string().email(),
-  password: string().min(8)
-})
 
 type formFields = z.infer<typeof loginSchema>
 
@@ -68,7 +65,7 @@ export default function Login() {
           <CiLock className="text-3xl" />
         </div>
         {errors && <div className="text-red-600">{errors.password?.message}</div>}
-        <p className="cursor-pointer hover:text-secondary-blue">
+        <p className="cursor-pointer text-secondary-blue hover:text-blue-400">
           <Link to="#">Forgot password?</Link>
         </p>
         <button
@@ -82,7 +79,9 @@ export default function Login() {
       <p className="mt-10 mx-4">
         Don’t have an account?
         <Link to="/register">
-          <span className="cursor-pointer hover:text-secondary-blue">Register</span>
+          <span className="cursor-pointer text-secondary-blue mx-2 hover:text-blue-400">
+            Create account
+          </span>
         </Link>
       </p>
     </div>
