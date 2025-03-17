@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext,  useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 
 interface AuthContextType {
@@ -30,10 +30,10 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
 }
 
-export const useAuth = () => {
-  const context = useContext(AuthContext)
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider')
-  }
-  return context
-}
+// export const useAuth = () => {
+//   const context = useContext(AuthContext)
+//   if (!context) {
+//     throw new Error('useAuth must be used within an AuthProvider')
+//   }
+//   return context
+// }
