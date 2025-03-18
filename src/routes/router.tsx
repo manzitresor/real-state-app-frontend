@@ -5,6 +5,8 @@ import ProductTourTwo from '../pages/productTour/ProductTourTwo'
 import ProductTourThree from '../pages/productTour/ProductTourThree'
 import Login from '../pages/auth/Login'
 import SignupPage from '../pages/auth/Signup'
+import ProtectedRoute from './ProtectedRoute'
+import Home from '../pages/Home'
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,15 @@ const router = createBrowserRouter([
         path: 'register',
         element: <SignupPage />,
       },
+      {
+        element: <ProtectedRoute/>,
+        children: [
+          {
+            path:'home',
+            element: <Home/>
+          }
+        ]
+      }
     ],
   },
 ])
