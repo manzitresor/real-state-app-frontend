@@ -1,12 +1,7 @@
-import { createContext,  useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
+import { AuthContext } from '../hooks/useAuth'
 
-interface AuthContextType {
-  token: string | null
-  setToken: (token: string | null) => void
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setToken_] = useState<string | null>(localStorage.getItem('token'))
@@ -25,15 +20,8 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     }
   }, [token])
 
-  const contextValue = useMemo(() => ({ token, setToken }), [token])
+  const contextValue = useMemo(() => ({ token, setToken, isAuthenticated: !!token }), [token])
 
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
 }
 
-// export const useAuth = () => {
-//   const context = useContext(AuthContext)
-//   if (!context) {
-//     throw new Error('useAuth must be used within an AuthProvider')
-//   }
-//   return context
-// }

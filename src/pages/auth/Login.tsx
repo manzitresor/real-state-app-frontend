@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import {z} from 'zod'
 import loginSchema from '../../schema/login'
 import axios from 'axios'
-import { useAuth } from '../../authProvider/authProvider'
+import { useAuth } from '../../hooks/useAuth'
 
 
 type formFields = z.infer<typeof loginSchema>
