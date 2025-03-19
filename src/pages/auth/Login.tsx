@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdOutgoingMail } from 'react-icons/md'
 import { CiLock } from 'react-icons/ci'
 import loginImage from '../../assets/login-IMAGE.svg'
@@ -6,11 +6,15 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {z} from 'zod'
 import loginSchema from '../../schema/login'
+import axios from 'axios'
+import { useAuth } from '../../hooks/useAuth'
 
 
 type formFields = z.infer<typeof loginSchema>
 
 export default function Login() {
+  const navigate = useNavigate()
+  const {setToken} = useAuth()
     const {
       register,
       handleSubmit,
@@ -23,11 +27,32 @@ export default function Login() {
 
     const onSubmit: SubmitHandler<formFields> = async(data) => {
       try {
-            console.log(data)
-          await new Promise(resolve => setTimeout(resolve, 2000)) 
+           const response = await axios.post('http://localhost:3000/auth',{
+            email: data.email,
+            password: data.password
+           })
+
+           if (response.data && response.data.access_token) {
+             setToken(response.data.access_token)
+             console.log('authenticated and directed to another page')
+             navigate('/home')
+           } else {
+             setError('root', { message: 'Invalid response from the server' })
+           }
+
       } catch(error){
-        setError('root',{ message: 'Failed to send data'})
-        console.log(error)
+        if (axios.isAxiosError(error) && error.response) {
+        if (error.response.status === 401) {
+          setError('root', { message: 'Invalid email or password' })
+        } else {
+          setError('root', {
+            message: `Server error: ${error.response.data?.message || error.message}`,
+          })
+        }
+      } else {
+        setError('root', { message: 'Failed to connect to server' })
+      }
+      console.error(error)
       }
     }
  
@@ -68,6 +93,7 @@ export default function Login() {
         <p className="cursor-pointer text-secondary-blue hover:text-blue-400">
           <Link to="#">Forgot password?</Link>
         </p>
+        {errors && <div className="text-red-600">{errors.root?.message}</div>}
         <button
           type="submit"
           disabled={isSubmitting}
