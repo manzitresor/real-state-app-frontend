@@ -4,6 +4,7 @@ import Login from '../pages/auth/Login'
 import SignupPage from '../pages/auth/Signup'
 import ProtectedRoute from './ProtectedRoute'
 import Home from '../pages/Home'
+import Dashboard from '../pages/Dashboard'
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,12 @@ const router = createBrowserRouter([
             path: 'splash',
             element: <Splash />,
           },
+          
         ],
+      },
+      {
+        path: 'home',
+        element: <Home/>
       },
       {
         path: 'login',
@@ -34,8 +40,8 @@ const router = createBrowserRouter([
         element: <ProtectedRoute/>,
         children: [
           {
-            path:'home',
-            element: <Home/>
+            path:'dashboard',
+            element: <Dashboard/>
           }
         ]
       }
