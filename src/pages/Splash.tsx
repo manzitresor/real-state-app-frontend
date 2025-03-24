@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import stairs from "../assets/image 3.svg"
 import logo from "../assets/logo.png"
+
 export default function Splash() {
   return (
     <div className="h-screen w-full relative">
@@ -13,13 +14,13 @@ export default function Splash() {
           <div>
             <img src={logo} />
             <h1 className="font-bold text-3xl">
-              <span className="text-green-primary text-4xl"> Kwanda </span>Real Estate
+              <span className="text-green-primary-400 text-4xl"> Kwanda </span>Real Estate
             </h1>
           </div>
           <div>
             <Link
-              to="/onboarding/productTour-1"
-              className="bg-green-primary rounded-lg px-10 py-4 text-lg font-bold items-center"
+              to="/home"
+              className="bg-green-primary-400 rounded-lg px-10 py-4 text-lg font-bold items-center"
             >
               let's start
             </Link>

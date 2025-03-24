@@ -97,14 +97,14 @@ export default function Login() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-green-primary w-full rounded-lg py-3 text-white text-lg text-center cursor-pointer"
+          className="bg-green-primary-400 w-full rounded-lg py-3 text-white text-lg text-center cursor-pointer"
         >
           {isSubmitting ? 'Loading...' : 'Login'}
         </button>
       </form>
       <p className="mt-10 mx-4">
         Don’t have an account?
-        <Link to="/register">
+        <Link to="/signup">
           <span className="cursor-pointer text-secondary-blue mx-2 hover:text-blue-400">
             Create account
           </span>
