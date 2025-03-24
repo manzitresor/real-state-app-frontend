@@ -97,7 +97,7 @@ export default function Login() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-green-primary w-full rounded-lg py-3 text-white text-lg text-center cursor-pointer"
+          className="bg-green-primary-400 w-full rounded-lg py-3 text-white text-lg text-center cursor-pointer"
         >
           {isSubmitting ? 'Loading...' : 'Login'}
         </button>

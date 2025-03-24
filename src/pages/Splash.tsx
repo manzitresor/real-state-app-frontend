@@ -14,13 +14,13 @@ export default function Splash() {
           <div>
             <img src={logo} />
             <h1 className="font-bold text-3xl">
-              <span className="text-green-primary text-4xl"> Kwanda </span>Real Estate
+              <span className="text-green-primary-400 text-4xl"> Kwanda </span>Real Estate
             </h1>
           </div>
           <div>
             <Link
               to="/home"
-              className="bg-green-primary rounded-lg px-10 py-4 text-lg font-bold items-center"
+              className="bg-green-primary-400 rounded-lg px-10 py-4 text-lg font-bold items-center"
             >
               let's start
             </Link>
