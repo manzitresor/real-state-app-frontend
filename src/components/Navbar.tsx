@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import logo from '../assets/logo.png';
-import { MdMenuOpen } from 'react-icons/md';
 import { useState } from 'react';
+import { MdMenuOpen } from 'react-icons/md'
+import { IoCloseSharp } from 'react-icons/io5'
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
+  const [isMenuOpen,setIsMenuOpen] = useState(false)
+  const toggleMenu =()=> {
+    setIsMenuOpen(prev => !prev)
+  }
+
 
   return (
     <>
-      <nav className="bg-secondary-blue text-white px-4">
+      <nav className=" bg-secondary-blue text-white px-4">
         <div className="flex justify-end md:hidden py-2 font-bold text-3xl text-green-primary-400">
           <button onClick={toggleMenu}>
             <MdMenuOpen />
@@ -44,22 +46,17 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* Background Blur Overlay (does not affect the menu) */}
       {isMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-          onClick={toggleMenu}
-        ></div>
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" onClick={toggleMenu}></div>
       )}
 
-      {/* Sidebar Menu (above the blurred background) */}
       {isMenuOpen && (
-        <div className="md:hidden fixed top-0 right-0 w-2/3 h-full py-4 flex flex-col gap-y-4 bg-secondary-blue px-3 text-white z-50 shadow-lg">
+        <div className="md:hidden absolute top-0 right-0 w-2/3 h-full z-50 py-4 flex flex-col gap-y-4 bg-secondary-blue rounded-bl-xl px-3 text-white">
           <button
             className="absolute right-4 top-2 text-2xl text-green-primary-400"
             onClick={toggleMenu}
           >
-            ✖
+            <IoCloseSharp/>
           </button>
           <ul className="flex flex-col gap-y-4 items-center">
             <li className="flex items-center text-lg font-bold text-soft-gray">
@@ -91,7 +88,7 @@ function Navbar() {
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar
