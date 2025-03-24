@@ -104,7 +104,7 @@ export default function Login() {
       </form>
       <p className="mt-10 mx-4">
         Don’t have an account?
-        <Link to="/register">
+        <Link to="/signup">
           <span className="cursor-pointer text-secondary-blue mx-2 hover:text-blue-400">
             Create account
           </span>
