@@ -22,7 +22,7 @@ export default function Splash() {
               to="/home"
               className="bg-green-primary-400 rounded-lg px-10 py-4 text-lg font-bold items-center"
             >
-              let's start
+              Let's start
             </Link>
           </div>
         </div>
