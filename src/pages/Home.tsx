@@ -1,8 +1,20 @@
 import Navbar from '../components/Navbar'
 import heroImg from '../assets/heroImg.svg'
-import { FaUsers } from 'react-icons/fa'
-import { FaKey } from 'react-icons/fa6'
 import { SlCalender } from 'react-icons/sl'
+import Statistic from '../components/Statistic'
+
+const statisticData = [
+  {
+    id: 1,
+    title: '50k+ renters',
+    description: 'believe in our service',
+  },
+  {
+    id: 2,
+    title: '10k+ properties',
+    description: 'and house ready for occupancy',
+  },
+]
 
 export default function Home() {
   return (
@@ -18,30 +30,11 @@ export default function Home() {
           </div>
           {/* Properties and renters section to go down and this should be component in future */}
           <div className="flex gap-x-24 pt-9">
-            <div>
-              <div className="h-16 w-16 relative rounded-full bg-green-primary-200 flex items-center justify-center">
-                <FaUsers className="text-white text-3xl" />
-                <div className="h-4 w-4 bg-secondary-blue-400 rounded-sm flex items-center justify-center absolute bottom-1 right-1">
-                  <FaKey className="text-white w-2 h-2" />
-                </div>
-              </div>
-              <div>
-                <h4 className="text-xl font-bold text-green-primary-600">50k+ renters</h4>
-                <p className="text-black/70 text-base">believe in our service</p>
-              </div>
-            </div>
-            <div>
-              <div className="h-16 w-16 relative rounded-full bg-green-primary-200 flex items-center justify-center">
-                <FaUsers className="text-white text-3xl" />
-                <div className="h-4 w-4 bg-secondary-blue-400 rounded-sm flex items-center justify-center absolute bottom-1 right-1">
-                  <FaKey className="text-white w-2 h-2" />
-                </div>
-              </div>
-              <div>
-                <h4 className="text-xl font-bold text-green-primary-600">50k+ renters</h4>
-                <p className="text-black/70 text-base">believe in our service</p>
-              </div>
-            </div>
+            {
+              statisticData.map(data =>(
+                <Statistic key={data.id} title={data.title} description={data.description}/>
+              ))
+            }
           </div>
         </div>
         <div className="col-span-6 h-[36rem] relative">
