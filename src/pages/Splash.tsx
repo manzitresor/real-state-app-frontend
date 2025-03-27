@@ -9,7 +9,7 @@ export default function Splash() {
         <img src={stairs} className="h-full w-full object-cover" />
       </div>
       <div className="absolute bottom-0 w-full h-full">
-        <div className="bg-secondary-blue opacity-60 absolute inset-0"></div>
+        <div className="bg-secondary-blue-400 opacity-60 absolute inset-0"></div>
         <div className="relative h-full text-white flex flex-col justify-around items-center">
           <div>
             <img src={logo} />

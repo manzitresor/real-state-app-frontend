@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className=" bg-secondary-blue text-white px-4">
+      <nav className=" bg-secondary-blue-400 text-white px-4">
         <div className="flex justify-end md:hidden py-2 font-bold text-3xl text-green-primary-400">
           <button onClick={toggleMenu}>
             <MdMenuOpen />
@@ -51,7 +51,7 @@ function Navbar() {
       )}
 
       {isMenuOpen && (
-        <div className="md:hidden absolute top-0 right-0 w-2/3 h-full z-50 py-4 flex flex-col gap-y-4 bg-secondary-blue rounded-bl-xl px-3 text-white">
+        <div className="md:hidden absolute top-0 right-0 w-2/3 h-full z-50 py-4 flex flex-col gap-y-4 bg-secondary-blue-400 rounded-bl-xl px-3 text-white">
           <button
             className="absolute right-4 top-2 text-2xl text-green-primary-400"
             onClick={toggleMenu}
