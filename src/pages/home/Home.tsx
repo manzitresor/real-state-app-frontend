@@ -1,5 +1,6 @@
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/shared/Navbar'
 import HeroSection from './HeroSection'
+import NewSection from './NewSection'
 
 
 
@@ -8,6 +9,7 @@ export default function Home() {
     <main>
       <Navbar></Navbar>
       <HeroSection />
+      <NewSection/>
     </main>
   )
 }
