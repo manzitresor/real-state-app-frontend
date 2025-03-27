@@ -3,7 +3,7 @@ import Splash from '../pages/Splash'
 import Login from '../pages/auth/Login'
 import SignupPage from '../pages/auth/Signup'
 import ProtectedRoute from './ProtectedRoute'
-import Home from '../pages/Home'
+import Home from '../pages/home/Home'
 import Dashboard from '../pages/Dashboard'
 
 const router = createBrowserRouter([
