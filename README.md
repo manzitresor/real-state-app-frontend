@@ -5,6 +5,7 @@ This is a full-stack real estate platform that allows users to buy, sell, and re
 - Frontend: React (Next.js), Tailwind CSS
 - Authentication: JWT (JSON Web Token)
 ## Installation & Setup
+
 - Clone the Repository
   ```
   git clone https://github.com/yourusername/real-state-app-frontend.git
