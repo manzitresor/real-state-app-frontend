@@ -1,20 +1,19 @@
 import { CiLock } from 'react-icons/ci'
-import { MdKeyboardArrowLeft, MdOutgoingMail } from 'react-icons/md'
+import { MdOutgoingMail } from 'react-icons/md'
 import { CiUser } from 'react-icons/ci'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import useUsers from '../../hooks/useUsers'
 import signSchema from '../../schema/signup'
-import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import BackButton from '../../components/BackButton'
 
 
 type formFields = z.infer<typeof signSchema>
 
 export default function SignupPage() {
   const { postUser } = useUsers()
-  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -41,11 +40,7 @@ export default function SignupPage() {
 
   return (
     <div>
-      <div className="bg-gray-300 rounded-full my-5 mx-2 w-11 h-11 flex items-center justify-center">
-        <button onClick={()=> navigate(-1)}>
-          <MdKeyboardArrowLeft className="text-2xl text-secondary-blue" />
-        </button>
-      </div>
+      <BackButton/>
       <div className="mx-4 flex flex-col items-center">
         <div className="my-8 space-y-4">
           <h1 className="text-secondary-blue text-2xl">
