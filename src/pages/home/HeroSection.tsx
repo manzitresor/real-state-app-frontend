@@ -1,17 +1,21 @@
 import { SlCalender } from "react-icons/sl";
 import Statistic from "../../components/Statistic";
 import heroImg from '../../assets/heroImg.svg'
+import { FaUsers } from "react-icons/fa6";
+import { GiFamilyHouse } from 'react-icons/gi'
 
 const statisticData = [
   {
     id: 1,
     title: '50k+ renters',
     description: 'believe in our service',
+    icon: FaUsers,
   },
   {
     id: 2,
     title: '10k+ properties',
     description: 'and house ready for occupancy',
+    icon: GiFamilyHouse,
   },
 ]
 
@@ -25,10 +29,14 @@ export default function HeroSection() {
             A great platform to buy, sell, or even rent your properties without any commisions.
           </p>
         </div>
-        {/* Properties and renters section to go down and this should be component in future */}
         <div className="flex gap-x-24 pt-9">
           {statisticData.map(data => (
-            <Statistic key={data.id} title={data.title} description={data.description} />
+            <Statistic
+              key={data.id}
+              title={data.title}
+              description={data.description}
+              icon={data.icon}
+            />
           ))}
         </div>
       </div>
