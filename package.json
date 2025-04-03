@@ -11,7 +11,8 @@
     "prepare": "husky install .husky",
     "lint:commit": "commitlint",
     "lint:no-cache": "eslint src",
-    "lint:fix": "eslint src --fix --cache"
+    "lint:fix": "eslint src --fix --cache",
+    "prettier:check": "prettier --check ."
   },
   "commitlint": {
     "extends": [
