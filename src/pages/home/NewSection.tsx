@@ -39,16 +39,16 @@ const propertiesData = [
 
 export default function NewSection() {
   return (
-    <section className="bg-white h-full grid grid-cols-12 pt-28 pb-6">
-      <div className="col-span-5 py-14 px-11 mx-16 space-y-4 bg-gray-200 rounded-lg">
+    <section className="bg-white h-full grid md:grid-cols-12 pt-28 pb-6">
+      <div className="md:col-span-5 py-14 px-11 md:mx-16 space-y-4 bg-gray-200 rounded-lg">
         <h1 className="text-secondary-blue-400 font-bold text-3xl">
           The new way to find your new home
         </h1>
         <p>Find your dream place to live in with more than 10k+ properties listed.</p>
         <Button styles={'secondary-blue-400'}>Browse Properties</Button>
       </div>
-      <div className="col-span-7">
-        <div className="grid grid-cols-2 gap-6 mx-6 my-4">
+      <div className="md:col-span-7">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-12 md:gap-6 mx-4 md:mx-6 my-4">
           {propertiesData.map(data => (
             <Statistic
               key={data.id}
