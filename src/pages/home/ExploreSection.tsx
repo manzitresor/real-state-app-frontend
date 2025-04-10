@@ -9,13 +9,13 @@ import propertyData from '../../data/properties'
 
 export default function ExploreSection() {
   return (
-    <section className="w-full min-h-screen mt-20 bg-soft-gray py-10 px-16">
+    <section className="w-full min-h-screen mt-20 bg-soft-gray py-10 px-11 md:px-16">
       <div className="w-full">
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-4xl">Based on your location</h1>
           <p className="text-gray-500 text-base">some of our picked properties near you location</p>
         </div>
-        <div className="flex justify-between text-secondary-blue-400 mt-10">
+        <div className="flex flex-col gap-3 md:flex-row justify-between text-secondary-blue-400 mt-10">
           {/* Categories */}
           <ul className="bg-green-primary-200 flex gap-x-10 px-4 py-4 rounded-lg ">
             <li className="bg-white px-2 rounded-lg flex items-center gap-x-1 cursor-pointer">
@@ -41,7 +41,7 @@ export default function ExploreSection() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3">
         {propertyData.map(property => (
           <PropertyCard key={property.id} {...property} />
         ))}
