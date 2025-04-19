@@ -1,4 +1,5 @@
 import Navbar from '../../components/shared/Navbar'
+import Contact from './Contact'
 import ExploreSection from './ExploreSection'
 import HeroSection from './HeroSection'
 import LandlordsSection from './LandlordsSection'
@@ -14,6 +15,7 @@ export default function Home() {
       <NewSection/>
       <ExploreSection/>
       <LandlordsSection/>
+      <Contact/>
     </main>
   )
 }
