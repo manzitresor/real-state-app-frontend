@@ -3,7 +3,7 @@ import React from 'react'
 export default function Contact() {
   return (
     <section className="bg-soft-gray h-full">
-      <div className="flex flex-col items-center py-10 space-y-4">
+      <div className="flex flex-col items-center py-10 space-y-4 mx-6">
         <h1 className="text-4xl">Are you a landlord?</h1>
         <p className="text-black/50 text-base">
           Discover ways to increase your home's value and get listed. No Spam.
