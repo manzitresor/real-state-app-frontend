@@ -18,6 +18,7 @@ This is a full-stack real estate platform that allows users to buy, sell, and re
     ```
 - Environment Variables
   Create a `.env` file in the root of your backend with the following values:
+  
   ```
   DATABASE_URL=your_database_url
   JWT_SECRET=your_secret_key
