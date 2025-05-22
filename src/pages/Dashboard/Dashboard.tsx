@@ -1,5 +1,5 @@
-import React from 'react'
-import DashboardSidebar from '../components/DashboardSidebar'
+import { Outlet } from 'react-router-dom'
+import DashboardSidebar from '../../components/DashboardSidebar'
 
 export default function Dashboard() {
   return (
@@ -7,7 +7,9 @@ export default function Dashboard() {
       <div className='col-span-2'>
         <DashboardSidebar/>
       </div>
-      <div className='bg-green-500 col-span-10'></div>
+      <div className='bg-gray-400 col-span-10'>
+        <Outlet/>
+      </div>
     </div>
   )
 }

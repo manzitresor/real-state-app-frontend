@@ -4,7 +4,9 @@ import Login from '../pages/auth/Login'
 import SignupPage from '../pages/auth/Signup'
 import ProtectedRoute from './ProtectedRoute'
 import Home from '../pages/home/Home'
-import Dashboard from '../pages/Dashboard'
+import Dashboard from '../pages/Dashboard/Dashboard'
+import CreatePost from '../pages/Dashboard/CreatePost'
+import DashboardHome from '../pages/Dashboard/DashboardHome'
 
 const router = createBrowserRouter([
   {
@@ -41,8 +43,18 @@ const router = createBrowserRouter([
         children: [
           {
             path:'dashboard',
-            element: <Dashboard/>
-          }
+            element: <Dashboard/>,
+            children: [
+              {
+                index: true,
+                element: <DashboardHome />,
+              },
+              {
+                path:'post',
+                element: <CreatePost/>
+              }
+            ]
+          },
         ]
       }
     ],
