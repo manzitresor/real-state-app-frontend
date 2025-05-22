@@ -9,7 +9,7 @@ import { IoMdSettings } from 'react-icons/io'
 
 export default function DashboardSidebar() {
   return (
-    <div className="bg-secondary-blue-400 h-screen">
+    <div className="bg-secondary-blue-400 h-screen fixed">
       <div className="flex items-center text-lg font-bold text-soft-gray mr-4">
         <img src={logo} alt="kwanda-estate-logo" width={64} />
         <span className="text-green-primary-400">Kwanda </span>- Estate
@@ -21,7 +21,7 @@ export default function DashboardSidebar() {
         </li>
         <li className="hover:text-green-primary-100 flex items-center gap-x-2">
           <MdPostAdd className="text-green-primary-200 text-xl" />
-          <Link to="#">Posts</Link>
+          <Link to="/dashboard/post">Posts</Link>
         </li>
         <li className="hover:text-green-primary-100 flex items-center gap-x-2">
           <FaMessage className="text-green-primary-200 text-xl" />
