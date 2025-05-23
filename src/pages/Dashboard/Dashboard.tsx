@@ -7,7 +7,7 @@ export default function Dashboard() {
       <div className='col-span-2'>
         <DashboardSidebar/>
       </div>
-      <div className='bg-gray-400 col-span-10'>
+      <div className='bg-gray-100 col-span-10'>
         <Outlet/>
       </div>
     </div>
