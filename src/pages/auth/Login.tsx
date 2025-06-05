@@ -12,6 +12,7 @@ import BackButton from '../../components/BackButton'
 
 
 type formFields = z.infer<typeof loginSchema>
+const apiUrl = process.env.REACT_APP_API_URL
 
 export default function Login() {
   const navigate = useNavigate()
@@ -28,7 +29,7 @@ export default function Login() {
 
     const onSubmit: SubmitHandler<formFields> = async(data) => {
       try {
-           const response = await axios.post('http://localhost:3000/auth/signin', {
+           const response = await axios.post(`${apiUrl}auth/signin`, {
              email: data.email,
              password: data.password,
            })

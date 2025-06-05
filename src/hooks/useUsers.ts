@@ -1,15 +1,17 @@
 import useAxios from "axios-hooks";
 import { userDTO } from "../types/userType";
 
+const apiUrl = import.meta.env.VITE_API_URL
+
  export default function useUsers(){
-    const [{loading,error,data},executePost] = useAxios(
-        {
-        url: 'http://localhost:3000/users',
-        method: 'POST'
-        },
-        {
-            manual: true
-        }
+    const [{ loading, error, data }, executePost] = useAxios(
+      {
+        url: `${apiUrl}/users`,
+        method: 'POST',
+      },
+      {
+        manual: true,
+      },
     )
     const postUser = async(userData:userDTO) => {
         try{

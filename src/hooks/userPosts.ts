@@ -1,11 +1,13 @@
 import useAxios from "axios-hooks";
 import { userPostDTO } from "../types/userType";
 
+const apiUrl = process.env.REACT_APP_API_URL
+
 
 export default function useUserPost(){
     const [{ loading, error, data }, executePost] = useAxios(
       {
-        url: 'http://localhost:3000/posts',
+        url: `${apiUrl}/posts`,
         method: 'POST',
       },
       {
