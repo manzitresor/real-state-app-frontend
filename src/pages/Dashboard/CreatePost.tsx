@@ -1,34 +1,47 @@
-import Button from "../../components/shared/Button";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import { postSchema } from "../../schema/post.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
+import Button from '../../components/shared/Button'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import { z } from 'zod'
+import { postSchema } from '../../schema/post.schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import useUserPost from '../../hooks/userPosts'
+import toast from 'react-hot-toast'
 
 type FormFields = z.infer<typeof postSchema>
 
 export default function CreatePost() {
+  const { createPost } = useUserPost()
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormFields>({
     resolver: zodResolver(postSchema),
     defaultValues: {
       title: '',
-      price: '',
       address: '',
       content: '',
       city: '',
-      bedroom: '',
-      bathroom: '',
       type: 'rent',
       property: 'apartment',
       utilities: 'owner',
-    }
-  });
+    },
+  })
 
-  const onSubmit: SubmitHandler<FormFields> = data => {
+  const onSubmit: SubmitHandler<FormFields> = async data => {
     console.log(data)
+    try {
+      await createPost({
+        ...data,
+        propertyType: data.property,
+        utilitiesPolicy: data.utilities,
+      })
+      reset()
+      toast.success('Post created successfully')
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to create post'
+      toast.error(errorMessage)
+    }
   }
   return (
     <div>
@@ -53,7 +66,7 @@ export default function CreatePost() {
             Price
           </label>
           <input
-            type="text"
+            type="number"
             id="price"
             className="py-2 outline-none px-2 rounded-lg shadow-md"
             {...register('price', { required: true })}
@@ -100,24 +113,26 @@ export default function CreatePost() {
             Bedroom Number
           </label>
           <input
-            type="text"
+            type="number"
             id="bedroom"
             className="py-2 outline-none px-2 rounded-lg shadow-md"
-            {...register('bedroom', { required: true })}
+            {...register('bedrooms', { required: true })}
           />
-          {errors.bedroom && <p className="text-red-500">{errors.bedroom.message?.toString()}</p>}
+          {errors.bedrooms && <p className="text-red-500">{errors.bedrooms.message?.toString()}</p>}
         </div>
         <div className="flex flex-col gap-y-3 justify-center">
           <label htmlFor="bathroom" className="text-secondary-blue-500 font-semibold">
             Bathroom Number
           </label>
           <input
-            type="text"
-            id="bathroom"
+            type="number"
+            id="bathrooms"
             className="py-2 outline-none px-2 rounded-lg shadow-md"
-            {...register('bathroom', { required: true })}
+            {...register('bathrooms', { required: true })}
           />
-          {errors.bathroom && <p className="text-red-500">{errors.bathroom.message?.toString()}</p>}
+          {errors.bathrooms && (
+            <p className="text-red-500">{errors.bathrooms.message?.toString()}</p>
+          )}
         </div>
         <div className="flex flex-col gap-y-3 justify-center">
           <label htmlFor="type" className="text-secondary-blue-500 font-semibold">
@@ -164,10 +179,12 @@ export default function CreatePost() {
             <option value="tenant">Tenant is responsible</option>
             <option value="shared">Shared</option>
           </select>
-          {errors.utilities && <p className="text-red-500">{errors.utilities.message?.toString()}</p>}
+          {errors.utilities && (
+            <p className="text-red-500">{errors.utilities.message?.toString()}</p>
+          )}
         </div>
         <div className="flex flex-col gap-y-3 justify-center col-start-2">
-          <Button styles="secondary-blue-600"> Create Post</Button>
+          <Button styles="secondary-blue-600">Create Post</Button>
         </div>
       </form>
     </div>
