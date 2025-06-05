@@ -28,15 +28,14 @@ export default function Login() {
 
     const onSubmit: SubmitHandler<formFields> = async(data) => {
       try {
-           const response = await axios.post('http://localhost:3000/auth',{
-            email: data.email,
-            password: data.password
+           const response = await axios.post('http://localhost:3000/auth/signin', {
+             email: data.email,
+             password: data.password,
            })
 
            if (response.data && response.data.access_token) {
              setToken(response.data.access_token)
-             console.log('authenticated and directed to another page')
-             navigate('/home')
+             navigate('/dashboard')
            } else {
              setError('root', { message: 'Invalid response from the server' })
            }
