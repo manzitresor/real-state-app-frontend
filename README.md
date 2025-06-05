@@ -23,3 +23,8 @@ This is a full-stack real estate platform that allows users to buy, sell, and re
   DATABASE_URL=your_database_url
   JWT_SECRET=your_secret_key
   ```
+
+  ## Demo
+ -  [frontend-link](https://real-state-app-frontend.vercel.app/onboarding/splash)
+ -  [backend-link](https://real-estate-api-btrf.onrender.com)
+  
